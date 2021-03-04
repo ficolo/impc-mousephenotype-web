@@ -75,6 +75,7 @@ React components library, web application and widgets library for the mousepheno
     ```
     git push origin main
     ```
+12. Open a pull request and assign another member of the team to review your work
 
 ## Project architecture
 

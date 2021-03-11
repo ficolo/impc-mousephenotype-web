@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "../common/Header";
-import { MenuItem } from "../common/Header/MainNavBar";
+import { Header } from "@impc/components";
+// import { MenuItem } from "@impc/components";
 
-const sortChildren = (itemA: MenuItem, itemB: MenuItem) => {
+const sortChildren = (itemA: any, itemB: any) => {
   const itemASort = itemA.sort;
   const itemBSort = itemB.sort;
   if (
@@ -19,12 +19,12 @@ const sortChildren = (itemA: MenuItem, itemB: MenuItem) => {
 };
 
 export const DataPageTemplate = () => {
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [menuItems, setMenuItems] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/jsonmenu/`).then(res =>
-      res.json().then((json: MenuItem[]) => {
-        json.forEach(element => {
+    fetch(`${process.env.REACT_APP_BASE_URL}/jsonmenu/`).then((res) =>
+      res.json().then((json: any[]) => {
+        json.forEach((element) => {
           element.children?.sort(sortChildren);
         });
         setMenuItems(json);

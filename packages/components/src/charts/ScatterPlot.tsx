@@ -123,6 +123,7 @@ export const ScatterPlot: FunctionComponent<IScatterPlotProps> = (props) => {
 
   return (
     <div>
+      <h1>Hi!</h1>
       <ParentSize>
         {(parent) => {
           return (

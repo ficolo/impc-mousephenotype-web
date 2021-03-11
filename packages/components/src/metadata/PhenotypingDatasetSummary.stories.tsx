@@ -1,14 +1,17 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { IPhenotypingDatasetProps, PhenotypingDatasetSummary } from "./PhenotypingDatasetSummary";
+import {
+  IPhenotypingDatasetProps,
+  PhenotypingDatasetSummary,
+} from "./PhenotypingDatasetSummary";
 
 export default {
   title: "Components/Metadata/Phenotyping Dataset Summary",
-  component: PhenotypingDatasetSummary
+  component: PhenotypingDatasetSummary,
 } as Meta;
 
-const Template: Story<IPhenotypingDatasetProps> = args => (
-  <div style={{maxWidth: "600px"}}>
+const Template: Story<IPhenotypingDatasetProps> = (args) => (
+  <div style={{ maxWidth: "600px" }}>
     <PhenotypingDatasetSummary {...args} />
   </div>
 );
@@ -20,12 +23,10 @@ Default.args = {
   femaleControl: 200,
   maleControl: 200,
   femaleMutant: 9,
-  maleMutant: 13, 
+  maleMutant: 13,
   geneSymbol: "Cib2",
-  alleleName: "tm1b(EUCOMM)Wtsi"
+  alleleName: "tm1b(EUCOMM)Wtsi",
 };
-
-
 
 export const LargeControlNumber = Template.bind({});
 LargeControlNumber.args = {
@@ -36,5 +37,5 @@ LargeControlNumber.args = {
   femaleMutant: 9,
   maleMutant: 13,
   geneSymbol: "Cib2",
-  alleleName: "tm1b(EUCOMM)Wtsi"
+  alleleName: "tm1b(EUCOMM)Wtsi",
 };

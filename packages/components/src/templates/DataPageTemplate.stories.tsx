@@ -1,11 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { Header } from ".";
-import { INavBarProps } from "./MainNavBar";
+import { DataPageTemplate, IDataPageTemplateProps } from "./DataPageTemplate";
 
 export default {
-  title: "Components/Common/Header",
-  component: Header,
+  title: "Templates/DataPageTemplate",
+  component: DataPageTemplate,
 } as Meta;
 
 const menuItems = [
@@ -267,7 +266,9 @@ const menuItems = [
   },
 ];
 
-const Template: Story<INavBarProps> = (args) => <Header {...args} />;
+const Template: Story<IDataPageTemplateProps> = (args) => (
+  <DataPageTemplate {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

@@ -22,6 +22,7 @@
 .form__submit--disabled { }
 
 */
+@import "./vendor/fapro/css/all.min.css";
 @import "variables";
 
 @import "bootstrap/scss/bootstrap";
@@ -123,7 +124,7 @@ hr {
 }
 
 .mt-100 {
-  margin-top:100px;
+  margin-top: 100px;
 }
 
 .container-fluid {
@@ -237,17 +238,16 @@ hr {
 }
 
 .events {
-   
   .event:first-child {
     border-top: 5px solid $black;
   }
 
   .event:last-child {
-   border-bottom: 5px solid $black;
+    border-bottom: 5px solid $black;
   }
 
   &.events--past .event:first-child {
-       border-top: none;
+    border-top: none;
   }
 
   .event {
@@ -279,10 +279,9 @@ hr {
         top: 60%;
         line-height: 20px;
       }
-      margin-bottom:20px;
+      margin-bottom: 20px;
       @include md {
         margin-bottom: unset;
-
       }
     }
 
@@ -300,52 +299,47 @@ hr {
 
 .page-content.people {
   @include md {
-    padding-left:40px;
-    padding-right:40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
-
 .white-bg-small {
-  background-color:white;
+  background-color: white;
   @include md {
-    background-color:unset;
+    background-color: unset;
   }
 }
 
 .vignette {
-
-  margin-top:40px;
-  margin-bottom:40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 
   &--image {
-    width:100%;
+    width: 100%;
   }
 }
 
 .hidden {
-  display:none;
+  display: none;
 }
 .collapsing {
--webkit-transition: height 0.25s ease;
-       -o-transition: height 0.25s ease;
-          transition: height .25s ease;
+  -webkit-transition: height 0.25s ease;
+  -o-transition: height 0.25s ease;
+  transition: height 0.25s ease;
 }
 
-.grecaptcha-badge{
+.grecaptcha-badge {
   display: none !important;
-
 }
 
-.page-template-contact .grecaptcha-badge{
+.page-template-contact .grecaptcha-badge {
   display: block !important;
   z-index: 99;
 }
 
-.member-item{
-
-  h5{
-      font-weight: bold;
+.member-item {
+  h5 {
+    font-weight: bold;
   }
-
 }

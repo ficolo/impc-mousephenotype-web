@@ -19,7 +19,7 @@ export const PhenotypingDatasetSummary: FunctionComponent<IPhenotypingDatasetPro
   femaleMutant,
   maleMutant,
   geneSymbol,
-  alleleName
+  alleleName,
 }) => {
   return (
     <div className="card w-100">
@@ -31,28 +31,34 @@ export const PhenotypingDatasetSummary: FunctionComponent<IPhenotypingDatasetPro
           A <b>{procedureName}</b> phenotypic assay was performed on{" "}
           <b>{femaleControl + femaleMutant + maleControl + maleMutant} mice</b>.
           The charts show the results of measuring <b>{parameterName}</b> in{" "}
-          <b>{femaleMutant} female</b>, <b>{maleMutant} male</b> mutants compared to <b>{femaleControl} female</b>
-          , <b>{maleControl} male</b> controls. The mutants are <b></b> for the{" "}
+          <b>{femaleMutant} female</b>, <b>{maleMutant} male</b> mutants
+          compared to <b>{femaleControl} female</b>, <b>{maleControl} male</b>{" "}
+          controls. The mutants are <b></b> for the{" "}
           <b>
-            {geneSymbol}<sup>{alleleName}</sup>
+            {geneSymbol}
+            <sup>{alleleName}</sup>
           </b>{" "}
           allele.
         </p>
-        {
-          femaleControl + maleControl > 500 ? (
-                    <small>
-          * The high throughput nature of the IMPC means that large control
-          sample sizes may accumulate over a long period of time. See the{" "}
-          <a
-            href={`${process.env.REACT_APP_BASE_URL}/about-impc/animal-welfare`}
-          >
-            animal welfare guidelines
-          </a>{" "}
-          for more information.
-        </small>
-          ) : null
-        }
+        {displayHighThroughputDisclaimer(femaleControl + maleControl)}
       </div>
     </div>
   );
 };
+
+function displayHighThroughputDisclaimer(controlCount: number) {
+  if (controlCount > 500) {
+    return (
+      <small>
+        * The high throughput nature of the IMPC means that large control sample
+        sizes may accumulate over a long period of time. See the{" "}
+        <a href={`${process.env.REACT_APP_BASE_URL}/about-impc/animal-welfare`}>
+          animal welfare guidelines
+        </a>{" "}
+        for more information.
+      </small>
+    );
+  } else {
+    return null;
+  }
+}

@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useContext, useState } from "react";
+import ToggleMobileNavContext from "./ToggleMobileNav.context";
 import "./MainNavBar.css";
 
 export interface MenuItem {
@@ -16,6 +17,9 @@ export interface INavBarProps {
 
 export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
   const [activeMenuId, setActiveMenu] = useState(-1);
+  const { displayMobileNav, setDisplayMobileNav } = useContext(
+    ToggleMobileNavContext
+  );
 
   return (
     <div>
@@ -38,7 +42,7 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
               <div className="d-none d-lg-block">
                 <div className="menu-main-nav-container">
                   <ul id="menu-main-nav" className="menu">
-                    {menuItems.map(menuItem => {
+                    {menuItems.map((menuItem) => {
                       return (
                         <li
                           key={`menu-item-${menuItem.id}`}
@@ -71,6 +75,7 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
                 aria-controls="navbarToggleExternalContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
+                onClick={() => setDisplayMobileNav(true)}
               >
                 <span className="icon-bar top-bar"></span>
                 <span className="icon-bar middle-bar"></span>
@@ -81,8 +86,8 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
         </div>
       </div>
       {menuItems
-        .filter(menuItem => menuItem.children && menuItem.children.length > 0)
-        .map(menuItem => {
+        .filter((menuItem) => menuItem.children && menuItem.children.length > 0)
+        .map((menuItem) => {
           const itemId = `${menuItem.classes?.split("-")[0]}-menu`;
           return (
             <div
@@ -95,7 +100,7 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
                 paddingTop: "0px",
                 marginTop: "0px",
                 paddingBottom: "0px",
-                marginBottom: "0px"
+                marginBottom: "0px",
               }}
               onMouseOver={() => setActiveMenu(menuItem.id || -1)}
               onFocus={() => setActiveMenu(menuItem.id || -1)}
@@ -109,10 +114,10 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
                     </a>
                   ) : null}
                   {menuItem.children?.some(
-                    item => item.children && item.children?.length > 0
+                    (item) => item.children && item.children?.length > 0
                   ) ? (
                     <div className="row justify-content-end">
-                      {menuItem.children?.map(subMenuItem => {
+                      {menuItem.children?.map((subMenuItem) => {
                         return (
                           <div
                             key={subMenuItem.link}
@@ -130,7 +135,7 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
                                   }
                                   return 0;
                                 })
-                                .map(subMenutItemChild => {
+                                .map((subMenutItemChild) => {
                                   return (
                                     <p key={subMenutItemChild.link}>
                                       <a href={subMenutItemChild.link}>
@@ -145,7 +150,7 @@ export const MainNavBar: FunctionComponent<INavBarProps> = ({ menuItems }) => {
                       })}
                     </div>
                   ) : (
-                    menuItem.children?.map(subMenuItem => {
+                    menuItem.children?.map((subMenuItem) => {
                       return (
                         <a key={subMenuItem.link} href={subMenuItem.link}>
                           {subMenuItem.name}
